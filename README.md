@@ -5,7 +5,8 @@ deepSAGE aims to address the limitations of the state-of-the-art GRL approaches 
 
 # Packages
 Run the following command to install necessary packages needed to run the scripts
-* first create a conda environment by running: conda
+* first create a conda environment by running: conda create -deepsage python = 3.7
+* Then, activate the newly created environment: conda activate deepsage
 * Thereafter, run: pip install -r requirements.txt
 
 # Road network graph extraction
