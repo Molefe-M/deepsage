@@ -6,6 +6,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from datetime import datetime
+from common.models import DimensionReductionThree
 import torch_geometric.transforms as T
 from torch_geometric.datasets import Planetoid, Reddit
 from torch_geometric.loader import NeighborLoader
@@ -75,15 +76,24 @@ if __name__ == '__main__':
     hidden_out = 32
     out_channels = mlp_output_dim
     
-    # GRL layer parameters
+    # GRL layer and training parameters
     aggregators = ['mean']
-    top_neighbours = [5]
+    top_neighbours = [5] #ranksage
     learning_rates = [0.01]
-    
-    #GRL training parameters
     loss = torch.nn.CrossEntropyLoss()
     epochs = 160
     measure = 'micro'
+
+    # DAE layer and training parameters
+    learning_rate_dae = [0.0001]
+    loss = 'mean_squared_error'
+    batch_size = 64
+    epochs = 400
+    callback = tf.keras.callbacks.EarlyStopping(monitor = 'val_loss', patience = 10)
+    input_shape_ = mlp_input_dim
+    model_dae_three = DimensionReductionThree(input_shape_)
+    models = [model_dae_three]
+    model_names = ['dae_architecture_three']
     
     # Choose GRL Model to train
     grl_model = 'gat'
