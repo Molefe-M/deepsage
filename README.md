@@ -1,11 +1,11 @@
 
 # Brief overview
-This repository contains the codes of deepSAGE, a new GLR approach for road type classification of Johannesburg City Road networks.
+This repository contains the codes of deepSAGE, a new GLR approach for road type classification on a given Road networks graph dataset extracted from OpenStreetMaps (OSM).
 deepSAGE aims to address the limitations of the state-of-the-art GRL approaches that often performs embeddings on the raw features, which may not be accurate. Therefore, deepSAGE is a multi-stage GRL approach that first obtains the compact feature representation of each road segment (node) using the Deep AutoEncoder (DAE) model. The second stage of deepSAGE introduces RankSAGE, a novel GRL approach that employs an importance based neighbourhood sampling strategy during aggregation. RankSAGE employs a similar GRL layer to GraphSAGE, however, the difference lies in the neighbourhood sampling strategy. Some parts of the code (graph extraction and raw feature generation) were obtained in: https://github.com/zahrag/GAIN
 
 # Packages
 Run the following command to install necessary packages needed to run the scripts
-* first create a conda environment by running: conda create -deepsage python = 3.7
+* first create a conda environment by running: conda create -deepsage python
 * Then, activate the newly created environment: conda activate deepsage
 * Thereafter, run: pip install -r requirements.txt
 
